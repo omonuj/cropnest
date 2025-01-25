@@ -1,9 +1,6 @@
-package group3.africa.cropnest.model;
+package group3.africa.cropnest.Entities.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,17 +9,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    private String name;
+    private String productName;
     private String description;
     private Double price;
     private String image;
-    private Double discounttedPrice;
-
+    private Double discountedPrice;
 
 }
