@@ -1,8 +1,8 @@
-package group3.africa.cropnest.Service;
+package group3.africa.cropnest.service;
 
 
-import group3.africa.cropnest.Dtos.ProductRequestDTO;
-import group3.africa.cropnest.Dtos.ProductResponseDTO;
+import group3.africa.cropnest.dto.ProductRequestDTO;
+import group3.africa.cropnest.dto.ProductResponseDTO;
 
 import java.util.List;
 

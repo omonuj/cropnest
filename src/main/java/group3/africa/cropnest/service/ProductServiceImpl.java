@@ -1,11 +1,10 @@
-package group3.africa.cropnest.Service;
+package group3.africa.cropnest.service;
 
-import group3.africa.cropnest.Dtos.ProductRequestDTO;
-import group3.africa.cropnest.Dtos.ProductResponseDTO;
-import group3.africa.cropnest.Repository.ProductRepository;
-import group3.africa.cropnest.model.Category;
+import group3.africa.cropnest.dto.ProductRequestDTO;
+import group3.africa.cropnest.dto.ProductResponseDTO;
+import group3.africa.cropnest.repository.ProductRepository;
 import group3.africa.cropnest.model.Product;
-import group3.africa.cropnest.Exceptions.CategoryNotFoundException;
+import group3.africa.cropnest.exceptions.CategoryNotFoundException;
 import group3.africa.cropnest.Utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +17,8 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+//    @Autowired
+//    private CategoryRepository categoryRepository;
 
     @Autowired
     private ProductMapper productMapper;
@@ -28,8 +27,8 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public ProductResponseDTO addProduct(Long categoryId, ProductRequestDTO productRequestDTO) {
         try {
-            Category category = categoryRepository.findById(categoryId)
-                    .orElseThrow(() -> new CategoryNotFoundException("Category with this Id Not Found"));
+//            Category category = categoryRepository.findById(categoryId)
+//                    .orElseThrow(() -> new CategoryNotFoundException("Category with this Id Not Found"));
 
             Product product = new Product();
 //          product.setCategory(category);

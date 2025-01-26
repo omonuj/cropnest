@@ -1,4 +1,4 @@
-package group3.africa.cropnest.Repository;
+package group3.africa.cropnest.repository;
 
 import group3.africa.cropnest.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

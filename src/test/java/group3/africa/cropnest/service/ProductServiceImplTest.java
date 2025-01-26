@@ -1,6 +1,6 @@
-package group3.africa.cropnest.Service;
+package group3.africa.cropnest.service;
 
-import group3.africa.cropnest.Repository.ProductRepository;
+import group3.africa.cropnest.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
