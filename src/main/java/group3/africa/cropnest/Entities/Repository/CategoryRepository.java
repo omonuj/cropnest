@@ -1,12 +1,12 @@
 package group3.africa.cropnest.Entities.Repository;
 
-import group3.africa.cropnest.Entities.model.Product;
+import group3.africa.cropnest.Entities.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
-//    Optional<Product> findById(Long id);
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+    Optional<Category> findByName(String name);
 }

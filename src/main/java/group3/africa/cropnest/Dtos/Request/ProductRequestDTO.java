@@ -6,19 +6,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductRequestDTO {
-    private Long productId;
     private String productName;
-    private String description;
-    private Double price;
-    private String image;
-    private Double discountedPrice;
+    private String productDescription;
+    private double productPrice;
+    private String productImageUrl;
+    private double discountedPrice;
+    private Integer productQuantity;
+    //    private Category categoryName;
 
-    public ProductRequestDTO(Long productId, String productName, String description, Double price, String image, Double discountedPrice) {
-        this.productId = productId;
+
+    public ProductRequestDTO(String productName, String productDescription, double productPrice, String productImageUrl, double discountedPrice, Integer productQuantity) {
         this.productName = productName;
-        this.description = description;
-        this.price = price;
-        this.image = image;
+        this.productDescription = productDescription;
+        this.productPrice = productPrice;
+        this.productImageUrl = productImageUrl;
         this.discountedPrice = discountedPrice;
+        this.productQuantity = productQuantity;
     }
 }
