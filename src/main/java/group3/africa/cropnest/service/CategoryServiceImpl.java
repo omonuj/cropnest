@@ -21,6 +21,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     private ModelMapper modelMapper;
 
+    public CategoryServiceImpl(CategoryRepository categoryRepository, ModelMapper modelMapper) {
+        this.categoryRepository = categoryRepository;
+        this.modelMapper = modelMapper;
+    }
+
     @Override
     public CategoryResponse getAllCategories(Integer pageNumber,
                                              Integer pageSize,

@@ -6,6 +6,7 @@ import group3.africa.cropnest.dto.ProductResponseDTO;
 
 import java.util.List;
 
+
 public interface ProductService {
     ProductResponseDTO addProduct(Long categoryId, ProductRequestDTO productRequestDTO);
     ProductResponseDTO getProductById(Long id);
