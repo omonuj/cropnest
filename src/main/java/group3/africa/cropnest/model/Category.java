@@ -1,4 +1,4 @@
-package group3.africa.cropnest.Entities.model;
+package group3.africa.cropnest.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package group3.africa.cropnest.Entities.model;
+package group3.africa.cropnest.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

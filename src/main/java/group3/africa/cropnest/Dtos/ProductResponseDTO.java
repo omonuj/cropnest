@@ -1,4 +1,4 @@
-package group3.africa.cropnest.Dtos.Response;
+package group3.africa.cropnest.Dtos;
 
 import lombok.Getter;
 import lombok.Setter;

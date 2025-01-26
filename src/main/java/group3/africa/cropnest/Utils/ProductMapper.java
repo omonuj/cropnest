@@ -1,7 +1,7 @@
 package group3.africa.cropnest.Utils;
 
-import group3.africa.cropnest.Dtos.Response.ProductResponseDTO;
-import group3.africa.cropnest.Entities.model.Product;
+import group3.africa.cropnest.Dtos.ProductResponseDTO;
+import group3.africa.cropnest.model.Product;
 import org.springframework.stereotype.Component;
 
 @Component

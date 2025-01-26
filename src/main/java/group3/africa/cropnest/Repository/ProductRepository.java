@@ -1,10 +1,8 @@
-package group3.africa.cropnest.Entities.Repository;
+package group3.africa.cropnest.Repository;
 
-import group3.africa.cropnest.Entities.model.Product;
+import group3.africa.cropnest.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {

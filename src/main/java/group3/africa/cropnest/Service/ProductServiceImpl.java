@@ -1,11 +1,10 @@
 package group3.africa.cropnest.Service;
 
-import group3.africa.cropnest.Dtos.Request.ProductRequestDTO;
-import group3.africa.cropnest.Dtos.Response.ProductResponseDTO;
-import group3.africa.cropnest.Entities.Repository.CategoryRepository;
-import group3.africa.cropnest.Entities.Repository.ProductRepository;
-import group3.africa.cropnest.Entities.model.Category;
-import group3.africa.cropnest.Entities.model.Product;
+import group3.africa.cropnest.Dtos.ProductRequestDTO;
+import group3.africa.cropnest.Dtos.ProductResponseDTO;
+import group3.africa.cropnest.Repository.ProductRepository;
+import group3.africa.cropnest.model.Category;
+import group3.africa.cropnest.model.Product;
 import group3.africa.cropnest.Exceptions.CategoryNotFoundException;
 import group3.africa.cropnest.Utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
