@@ -2,6 +2,9 @@ package group3.africa.cropnest.service;
 
 import group3.africa.cropnest.dto.ProductRequestDTO;
 import group3.africa.cropnest.dto.ProductResponseDTO;
+import group3.africa.cropnest.exception.InvalidPaginationOrSortException;
+import group3.africa.cropnest.exception.ProductNotFoundException;
+import group3.africa.cropnest.exception.ProductServiceException;
 import group3.africa.cropnest.model.Category;
 import group3.africa.cropnest.repository.CategoryRepository;
 import group3.africa.cropnest.repository.ProductRepository;
@@ -9,8 +12,12 @@ import group3.africa.cropnest.model.Product;
 import group3.africa.cropnest.exception.CategoryNotFoundException;
 import group3.africa.cropnest.Utils.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -56,25 +63,66 @@ public class ProductServiceImpl implements ProductService{
 
 
 
-
-
     @Override
     public ProductResponseDTO getProductById(Long id) {
-        return null;
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return productMapper.toProductResponseDTO(product.get());
+        }
+        else
+            throw new ProductNotFoundException("Product With ID " + id + " not found.");
     }
+
 
     @Override
     public ProductResponseDTO updateProductById(Long id, ProductRequestDTO productRequestDTO) {
-        return null;
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            Product productToUpdate = product.get();
+            productToUpdate.setProductName(productRequestDTO.getProductName());
+            productToUpdate.setProductDescription(productRequestDTO.getProductDescription());
+            productToUpdate.setProductPrice(productRequestDTO.getProductPrice());
+            productToUpdate.setProductImageUrl(productRequestDTO.getProductImageUrl());
+            productToUpdate.setProductQuantity(productRequestDTO.getProductQuantity());
+            productToUpdate.setDiscountedPrice(productRequestDTO.getDiscountedPrice());
+            return productMapper.toProductResponseDTO(productRepository.save(productToUpdate));
+        }
+        else
+            throw new ProductNotFoundException("Product With ID " + id + " not found.");
     }
 
-    @Override
-    public List<ProductResponseDTO> getAllProducts() {
-        return List.of();
-    }
 
     @Override
     public ProductResponseDTO deleteProductById(Long id) {
-        return null;
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isEmpty()) {
+            throw new ProductNotFoundException("Product With ID " + id + " not found.");
+        }
+        productRepository.delete(product.get());
+        return productMapper.toProductResponseDTO(product.get());
     }
-}
+
+
+
+    public Page<ProductResponseDTO> getAllProducts(int pageNumber, int pageSize, String sortBy, String sortOrder) {
+        try {
+            Sort sort = sortOrder.equalsIgnoreCase("desc") ?
+                    Sort.by(sortBy).descending() :
+                    Sort.by(sortBy).ascending();
+
+            Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+
+            return productRepository.findAll(pageable).map(productMapper::toProductResponseDTO);
+
+        } catch (IllegalArgumentException e) {
+            throw new InvalidPaginationOrSortException("Invalid pagination or sorting parameter: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new ProductServiceException("An unexpected error occurred while fetching products.", e);
+        }
+    }
+
+
+    }
+
+
+

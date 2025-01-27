@@ -31,8 +31,9 @@ public class Product {
     @Column
     private Integer productQuantity;
 
-    @Column
-    private double discountedPrice;
+    @Column(name = "discounted_price")
+    private Double discountedPrice;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
@@ -90,7 +91,7 @@ public class Product {
         return discountedPrice;
     }
 
-    public void setDiscountedPrice(double discountedPrice) {
+    public void setDiscountedPrice(Double discountedPrice) {
         this.discountedPrice = discountedPrice;
     }
 

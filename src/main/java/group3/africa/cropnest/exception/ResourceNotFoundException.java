@@ -1,8 +1,5 @@
 package group3.africa.cropnest.exception;
 
-import lombok.Data;
-
-
 public class ResourceNotFoundException extends RuntimeException{
 
     String resourceName;
