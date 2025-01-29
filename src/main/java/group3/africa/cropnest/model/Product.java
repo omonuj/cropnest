@@ -1,8 +1,8 @@
 package group3.africa.cropnest.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
@@ -17,6 +17,7 @@ public class Product {
     private Long productId;
 
     @Column(name = "product_name", nullable = false)
+    @Size(min = 2, max = 50)
     private String productName;
 
     @Column(name = "product_description", nullable = false, columnDefinition = "TEXT")
@@ -33,7 +34,6 @@ public class Product {
 
     @Column(name = "discounted_price")
     private Double discountedPrice;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)

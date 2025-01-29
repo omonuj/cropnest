@@ -103,9 +103,18 @@ public class ProductServiceImpl implements ProductService{
     }
 
 
-
     public Page<ProductResponseDTO> getAllProducts(int pageNumber, int pageSize, String sortBy, String sortOrder) {
         try {
+            if (pageNumber < 0) {
+                throw new InvalidPaginationOrSortException("Page number must be 0 or greater.");
+            }
+            if (pageSize <= 0 || pageSize > 1000) {
+                throw new InvalidPaginationOrSortException("Page size must be greater than 0 and less than or equal to 1000.");
+            }
+            if (!sortOrder.equalsIgnoreCase("asc") && !sortOrder.equalsIgnoreCase("desc")) {
+                throw new InvalidPaginationOrSortException("Sort order must be either 'asc' or 'desc'.");
+            }
+
             Sort sort = sortOrder.equalsIgnoreCase("desc") ?
                     Sort.by(sortBy).descending() :
                     Sort.by(sortBy).ascending();
@@ -120,6 +129,7 @@ public class ProductServiceImpl implements ProductService{
             throw new ProductServiceException("An unexpected error occurred while fetching products.", e);
         }
     }
+
 
 
     }

@@ -10,7 +10,7 @@ public class ProductResponseDTO {
     private double discountedPrice;
     private Integer productQuantity;
 
-    // No-argument constructor
+    // no-argument constructor
     public ProductResponseDTO() {}
 
     public ProductResponseDTO(long productId, String productName, String productDescription, double productPrice,

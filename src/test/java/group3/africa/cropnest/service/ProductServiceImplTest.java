@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -181,7 +182,13 @@ public class ProductServiceImplTest {
         assertEquals(2, productRepository.count());
     }
 
-
+    @Test
+    void test_getAllProducts_withNoProductsAvailable() {
+        productRepository.deleteAll();
+        Page<ProductResponseDTO> products = productService.getAllProducts(0, 10, "productName", "asc");
+        assertNotNull(products);
+        assertTrue(products.getContent().isEmpty(), "Expected an empty product list.");
+    }
 
 
 }
