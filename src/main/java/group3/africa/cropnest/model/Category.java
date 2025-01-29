@@ -1,14 +1,12 @@
 package group3.africa.cropnest.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.*;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.List;
 
-@Entity(name = "categories")
+@Entity
+@Table(name = "categories")
 public class Category {
 
     @Id
@@ -20,6 +18,7 @@ public class Category {
   
     @NotBlank
     @Size(min = 5, message = "Category name must contain atleast 5 letters")
+    @Column(name="category_name", nullable = false, unique = true)
     private String categoryName;
 
 
